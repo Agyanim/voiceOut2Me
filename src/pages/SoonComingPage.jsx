@@ -11,6 +11,7 @@ import HamburgerSoonComingPage from "../component/HamburgerSoonComingPage";
 import MenuComingSoonPage from "../component/landing page/MenuSoonComingPage";
 import { Link } from "react-router-dom";
 import { schemaNotifyMe } from "../util/schema";
+import axios from "axios";
 
 // ..
 AOS.init();
@@ -41,21 +42,36 @@ const SoonComingPage = () => {
   };
 
   const submitHandler = async (e) => {
-    const emialApi =
-    "https://v1.nocodeapi.com/voiceout2me/google_sheets/HuKXRGNHEoAOgyOh?tabId=sheet1"
+    const emialApi ="http://localhost:5000/api/email/notification"
+    // const updateEmailApi ="http://localhost:5000/api/email/notification/:id"
+    
+// const updateData={id:754,email}
+const data={id:new Date().getMilliseconds(), date:new Date().toLocaleString(), email}
+try {
+  const res=await axios.post(emialApi,data)
+  alert("request sent.")
+  console.log(res.data);
+  setEmail("")
+} catch (error) {
+  console.log(error);
+}
 
-    try {
-      const response = await fetch(emialApi, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify([[email, new Date().toLocaleString()]]),
-      });
-      await response.json();
-      alert("Response submitted successfully");
-      setEmail("");
-    } catch (error) {
-      alert(error);
-    }
+
+    
+    // "https://v1.nocodeapi.com/voiceout2me/google_sheets/HuKXRGNHEoAOgyOh?tabId=sheet1"
+
+    // try {
+    //   const response = await fetch(emialApi, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify([[email, new Date().toLocaleString()]]),
+    //   });
+    //   await response.json();
+    //   alert("Response submitted successfully");
+    //   setEmail("");
+    // } catch (error) {
+    //   alert(error);
+    // }
   };
 
   return (
@@ -68,13 +84,13 @@ const SoonComingPage = () => {
             alt="logo"
           />
           <section className="flex  justify-between items-center w-[85%] ml-4">
-            <h1 className=" text-sm text-white sm:text-xl  font-bold font-OpenSand pl-14 lg:pl-10 ">
+            <h1 className="text-sm font-bold text-white sm:text-xl font-OpenSand pl-14 lg:pl-10">
               VoiceOut2Me
             </h1>
             <Link to={"/home"} className="about-us border-[1px] border-white rounded-2xl px-6 py-1 text-lg text-white hover:border-[2px] hidden lg:flex ">
               About us
             </Link>
-            <div className="menu lg:hidden z-20"
+            <div className="z-20 menu lg:hidden"
             onClick={displayMenuHandler}>
               <HamburgerSoonComingPage ToggleMenu={toggleMenu}/>
             </div>
@@ -130,7 +146,7 @@ const SoonComingPage = () => {
                 value={email}
                 onChange={onchangeHandler}
               />
-              <span className="absolute text-red-600 left-2 top-10 text-sm lg:text-lg p-1 italic font-OpenSand">
+              <span className="absolute p-1 text-sm italic text-red-600 left-2 top-10 lg:text-lg font-OpenSand">
                 {" "}
                 {errors?.email_address?.message}
               </span>
