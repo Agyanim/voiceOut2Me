@@ -15,12 +15,12 @@ const AboutSection = () => {
               <img className="w-[1rem] lg:w[2rem]" src={LeftTriangle} alt="left triangle" />
             </span>
           </div>
-<section className="flex flex-col-reverse lg:flex-row lg:mt-[-9rem]">
+<section className="flex flex-col-reverse lg:flex-row lg:mt-[-9rem] w-[100%] bg-green-100">
 
-        <div className="w-[93%] about-text-wrapper lg:w-[54%] relative ">
-          <div className="flex flex-col gap-10 md:w-[35rem] lg:w-[40rem]">
-            <div>
-              <h1 className=" text-xl sm:text-[22px] md:text-2xl  lg:text-[40px] lg:leading-[3rem]  text-black font-bold  overflow-hidden pt-[3rem]">
+        <div className=" w-[93%] about-text-wrapper lg:w-[55%] relative bg-yellow-100 flex">
+          <div className="flex flex-col gap-10 md:w-[35rem] lg:w-[100%]">
+            <div className="bg-red-300">
+              <h1 className="text-xl sm:text-[22px] md:text-2xl  lg:text-[2.1rem] lg:leading-[3rem]  text-black font-bold  overflow-hidden pt-[3rem]">
                 We help every individuals snap out of their <span className="text-[#695E93]">depression zone</span>
               </h1>
               <p className="w-[19rem] sm:w-[30rem] lg:w-[35rem] lg:text-lg xl:w-[36.375rem] pt-10 xl:text-xl">
@@ -30,7 +30,7 @@ const AboutSection = () => {
                 gets out of hand.
               </p>
             </div>
-            <div>
+            <div className="w-[100%]">
               <h1 className="text-xl lg:text-2xl font-[600]">Our Mission</h1>
               <p className="md:w-[30rem] lg:w-[33rem] xl:w-[35.75rem] ">
                 Our mission is to increase the overall wellness of depressed
@@ -41,9 +41,9 @@ const AboutSection = () => {
             </div>
           </div>
         </div>
-
+{/* About secsion hero image */}
         <div
-          className="about-hero-wrapper ml-[10%] w-[90%] h-[20rem]  sm:ml-[25%] md:ml-[28%] lg:ml-0 sm:w-[50%]   lg:w-[48%]  lg:h-[45rem] xl:w-[46%] mt-[-5rem]"
+          className=" about-hero-wrapper ml-[10%] w-[90%] h-[20rem]  sm:ml-[25%] md:ml-[28%] lg:ml-0 sm:w-[50%] lg:w-[45%]   lg:h-[40rem] xl:w-[50%] xl:h-[48rem] mt-[-5rem] bg-blue-500"
           style={{
             background: `url(${AboutHeroImage})`,
             backgroundRepeat: "no-repeat",

@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 const BookingASession = () => {
   return (
     <>
-      <div className="w-[93%] ml-auto font-Lato lg:mt-[-10rem] xl:mt-0">
-        <section className=" header-wrapper w-[16rem] lg:w-[21.688rem] h-[5.813rem] bg-[#695E93BF] flex flex-col justify-center items-center gap-1 mt-[2rem] mr-0 lg:ml-[53%]">
+      <div className="w-[93%] ml-auto font-Lato lg:mt-[-10rem] xl:mt-0 ">
+        <section className=" header-wrapper w-[16rem] lg:w-[21.688rem] h-[5.813rem] bg-[#695E93BF] flex flex-col justify-center items-center gap-1 mt-[5rem] mr-0 lg:ml-[53%] ">
           <span className="absolute right-0">
             <img className="w-[1rem] lg:w-[2rem]" src={RightRiangleImage} alt="right triangle" />
           </span>
