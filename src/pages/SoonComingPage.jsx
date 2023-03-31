@@ -11,6 +11,7 @@ import HamburgerSoonComingPage from "../component/HamburgerSoonComingPage";
 import MenuComingSoonPage from "../component/landing page/MenuSoonComingPage";
 import { Link } from "react-router-dom";
 import { schemaNotifyMe } from "../util/schema";
+import axios from "axios";
 
 // ..
 AOS.init();
@@ -41,21 +42,31 @@ const SoonComingPage = () => {
   };
 
   const submitHandler = async (e) => {
-    const emialApi =
-    "https://v1.nocodeapi.com/voiceout2me/google_sheets/HuKXRGNHEoAOgyOh?tabId=sheet1"
+    const emialApi ="http://localhost:8080/api/email/notification"
 
     try {
-      const response = await fetch(emialApi, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify([[email, new Date().toLocaleString()]]),
-      });
-      await response.json();
+      const res=await axios.post(emialApi, {email, date: new Date().toLocaleString(),id:new Date().getMilliseconds()})
       alert("Response submitted successfully");
+      console.log(res.data);
       setEmail("");
     } catch (error) {
-      alert(error);
+      console.log(error);
     }
+    // const emialApi =
+    // "https://v1.nocodeapi.com/voiceout2me/google_sheets/HuKXRGNHEoAOgyOh?tabId=sheet1"
+
+    // try {
+    //   const response = await fetch(emialApi, {
+    //     method: "POST",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify([[email, new Date().toLocaleString()]]),
+    //   });
+    //   await response.json();
+    //   alert("Response submitted successfully");
+    //   setEmail("");
+    // } catch (error) {
+    //   alert(error);
+    // }
   };
 
   return (
@@ -128,6 +139,7 @@ const SoonComingPage = () => {
                 placeholder="Email Address"
                 {...register("email_address")}
                 value={email}
+                name="email_address"
                 onChange={onchangeHandler}
               />
               <span className="absolute text-red-600 left-2 top-10 text-sm lg:text-lg p-1 italic font-OpenSand">
